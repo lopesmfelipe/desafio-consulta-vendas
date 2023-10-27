@@ -2,20 +2,20 @@ package com.devsuperior.dsmeta.dto;
 
 import com.devsuperior.dsmeta.entities.Sale;
 
-public class SummaryDTO {
+public class SaleSummaryDTO {
 
     private String name;
     private Double sum;
 
-    public SummaryDTO(){
+    public SaleSummaryDTO(){
     }
 
-    public SummaryDTO(String name, Double sum) {
+    public SaleSummaryDTO(String name, Double sum) {
         this.name = name;
         this.sum = sum;
     }
 
-    public SummaryDTO(Sale entity) {
+    public SaleSummaryDTO(Sale entity) {
         name = entity.getSeller().getName();
         sum = entity.getAmount();
     }

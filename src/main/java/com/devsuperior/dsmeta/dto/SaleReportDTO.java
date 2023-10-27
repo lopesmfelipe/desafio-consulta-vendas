@@ -4,25 +4,25 @@ import java.time.LocalDate;
 
 import com.devsuperior.dsmeta.entities.Sale;
 
-public class SaleMinDTO {
+public class SaleReportDTO {
 
 	private Long id;
 	private Double amount;
 	private LocalDate date;
-	private SellerMinDTO seller;
+	private String sellerName;
 	
-	public SaleMinDTO(Long id, Double amount, LocalDate date, SellerMinDTO seller) {
+	public SaleReportDTO(Long id, Double amount, LocalDate date, String sellerName) {
 		this.id = id;
 		this.amount = amount;
 		this.date = date;
-		this.seller = seller;
+		this.sellerName = sellerName;
 	}
 	
-	public SaleMinDTO(Sale sale) {
+	public SaleReportDTO(Sale sale) {
 		id = sale.getId();
 		amount = sale.getAmount();
 		date = sale.getDate();
-		seller = new SellerMinDTO(sale.getSeller());
+		sellerName = sale.getSeller().getName();
 	}
 
 	public Long getId() {
@@ -36,4 +36,6 @@ public class SaleMinDTO {
 	public LocalDate getDate() {
 		return date;
 	}
+
+	public String getSellerName(){ return sellerName; }
 }
