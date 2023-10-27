@@ -53,9 +53,10 @@ public class SaleService {
 */
 	//SUMMARY
 	public List<SummaryDTO> findSummary(String minDate, String maxDate) {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-				LocalDate miDate = LocalDate.parse(minDate, formatter);
-				LocalDate maDate = LocalDate.parse(maxDate, formatter);
+				LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+				LocalDate miDate = minDate.isEmpty() ? today.minusMonths(12) : LocalDate.parse(minDate);
+				LocalDate maDate = maxDate.isEmpty() ? today : LocalDate.parse(maxDate);
+
 				return repository.searchSummary(miDate, maDate);
 		}
 }
